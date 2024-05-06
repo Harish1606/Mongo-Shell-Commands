@@ -1,0 +1,44 @@
+1. show dbs
+Explanation : To show all the databases.
+
+2. use <database_name>
+Explanation : To switch to new or existing database.
+
+3. db.createCollection("<collection_name>")
+Explanation : To create new collection in the database.
+
+4. db.dropDatabase()
+Explanation : To delete the database.
+
+5. db.students.insertOne({name:"harish", age:24, gpa:8.4})
+Explanation : To insert one document in the collection students.
+
+6. db.students.find()
+Explanation : To find all the documents present in the collection students.
+
+7. db.students.insertMany([{name:"dinesh", age:23, gpa:7.4}, {name:"raja", age:24, gpa:8.3}])
+Explanation : To insert many documents in the collection students.
+
+8. db.students.insertOne({name:"Aslam", age: 24, gpa: 8.1, fullTime: true, registerDate: new Date(), graduationDate: null, courses: ["CS", "Diplomo", "Maths"], address: {street: "123 fake street", city: "Dubai", zip: 12345}})
+Explanation : These are the list of datatypes accepted to insert in the collection.
+
+9. db.students.find().sort({name:1})
+Explanation : To sort and find documents in the collection students based on the name field ascending order.
+
+10. db.students.find().sort({name:-1})
+Explanation : To sort and find documents in the collection students based on the name field descending order.
+
+11. db.students.find().limit(2)
+Explanation : To retrieve only limit of documents from the students collection where order of retrieval will be based on the document unique _id field.
+
+12. db.students.find({name: "Harish"})
+Explanation : To retrieve the documents in the students collection where name field is "Harish".
+
+13. db.students.find({gpa:8.3, age: 24})
+Explanation : To retrieve the documents in the students collection where gpa field is 8.3 and age field is 24.
+
+14. db.students.find({}, {name:true})
+Explanation : To retrieve the list of name (projection parameter) from the students collection if the document has name field but _id field will also be retrieved as part of name since _id is the unique id in the document.
+
+15. db.students.find({}, {_id:false,name:true})
+Explanation : To retrieve only the list of name (projection parameter) from the students collection if the document has name field.
