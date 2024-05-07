@@ -10,13 +10,13 @@ Explanation : To create new collection in the database.
 4. db.dropDatabase()
 Explanation : To delete the database.
 
-5. db.students.insertOne({name:"harish", age:24, gpa:8.4})
-Explanation : To insert one document in the collection students.
+5. db.students.insertOne({name:"Harish", age:24, gpa:8.4})
+Explanation : To insert one document in the students collection.
 
 6. db.students.find()
 Explanation : To find all the documents present in the collection students.
 
-7. db.students.insertMany([{name:"dinesh", age:23, gpa:7.4}, {name:"raja", age:24, gpa:8.3}])
+7. db.students.insertMany([{name:"Dinesh", age:23, gpa:7.4}, {name:"Raja", age:24, gpa:8.3}])
 Explanation : To insert many documents in the collection students.
 
 8. db.students.insertOne({name:"Aslam", age: 24, gpa: 8.1, fullTime: true, registerDate: new Date(), graduationDate: null, courses: ["CS", "Diplomo", "Maths"], address: {street: "123 fake street", city: "Dubai", zip: 12345}})
@@ -42,3 +42,84 @@ Explanation : To retrieve the list of name (projection parameter) from the stude
 
 15. db.students.find({}, {_id:false,name:true})
 Explanation : To retrieve only the list of name (projection parameter) from the students collection if the document has name field.
+
+16. db.students.updateOne({name:"Harish"}, {$set:{fullTime:true}})
+Explanation : To update one document in the students collection where we pass first argument as filter and second argument for the field to update. ($set will create new field or update the existing field in the document)
+
+17. db.students.updateOne({name:"Harish"}, {$unset:{fullTime:""}})
+Explanation : To update one document in the students collection where we pass first argument as filter and second argument for the field to update. ($unset will remove the field from the document)
+
+18. db.students.updateMany({}, {$set:{fullTime:true}})
+Explanation : To update many documents in the students collection where we pass first argument as filter and second argument for the field to update. 
+
+19. db.students.updateMany({fullTime:{$exists:false}},{$set:{fullTime:true}})
+Explanation : To update many documents in the students collection where fullTime field will be set to true for the documents which doesn't has fullTime field.
+
+20. db.students.deleteOne({name:"Harish"})
+Explanation : To delete one document from the students collection.
+
+21. db.students.deleteMany({fullTime:false})
+Explanation : To delete many documents from the students collection.
+
+22. db.students.deleteMany({registerDate:{$exists:true}})
+Explanation : To delete only the documents which has registerDate field.
+
+23. db.students.find({name:{$ne:"Harish"}})
+Explanation : To find all the documents where name field not equal to Harish.
+
+24. db.students.find({age:{$lt:24}})
+Explanation : To find all the documents where age is less than 24.
+
+25. db.students.find({age:{$lte:24}})
+Explanation : To find all the documents where age is less than or equal to 24.
+
+26. db.students.find({age:{$gt:23}})
+Explanation : To find all the documents where age is greater than 23.
+
+27. db.students.find({age:{$gte:23}})
+Explanation : To find all the documents where age is greater than or equal to 23.
+
+28. db.students.find({gpa:{$gt:8, $lt:8.5}})
+Explanation : To find all the documents where gpa is greater than 8 and less than 8.5.
+
+29. db.students.find({name:{$ne:"Harish"}, gpa:{$gt:8, $lt:8.5}})
+Explanation : To find all the documents where name is not equal to Harish and gpa is greater than 8 and less than 8.5.
+
+30. db.students.find({name:{$in:["Harish", "Raja"]}})
+Explanation : To find all the documents where name is either Harish or Raja.
+
+31. db.students.find({name:{$nin:["Harish", "Raja"]}})
+Explanation : To find all the documents where name is not equal to Harish or Raja.
+
+32. db.students.find({$and: [{fullTime:true}, {age:{$lt:24}}]})
+Explanation : To find all the documents where fullTime is true and age is less than 24.
+
+33. db.students.find({$or: [{fullTime:true}, {age:{$lt:24}}]})
+Explanation : To find all the documents where fullTime is true or age is less than 24.
+
+34. db.students.find({$nor: [{fullTime:true}, {age:{$lt:24}}]})
+Explanation : To find all the documents where fullTime is true nor age is less than 24.
+
+35. db.students.find({age:{$not:{$lt:24}}})
+Explanation : To find all the documents where age is not less than 24 which means age should be greater than or equal to 24 or null.
+
+36. db.students.createIndex({name: 1})
+Explanation : To create index for the name field
+
+Advantages : Used for select query and data retrieval will be faster.
+Disadvantages : Memory will be consumed more.
+
+37. db.students.getIndexes()
+Explanation : To retrieve all the available index.
+
+38. db.students.dropIndex("name_1")
+Explanation : To delete the index, need to pass index name.
+
+39. show collections
+Explanation : To show all the collections in the database.
+
+40. db.createCollection("teachers", {capped: true, size: 10000000, max: 100}, {autoIndexId: false})
+Explanation : To create collection teachers where capped is true used to set the size, size as 10MB, max document inserted will be 100 and autoIndexId is false which means index will not be created for _id field.
+
+41. db.teachers.drop()
+Explanation : To delete the teachers collection.
