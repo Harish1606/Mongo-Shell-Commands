@@ -10,6 +10,8 @@ Explanation : To create new collection in the database.
 4. db.dropDatabase()
 Explanation : To delete the database.
 
+<------------------------------- CRUD operations with sorting and limiting ----------------------------------->
+
 5. db.students.insertOne({name:"Harish", age:24, gpa:8.4})
 Explanation : To insert one document in the students collection.
 
@@ -64,6 +66,8 @@ Explanation : To delete many documents from the students collection.
 22. db.students.deleteMany({registerDate:{$exists:true}})
 Explanation : To delete only the documents which has registerDate field.
 
+<----------------------------------------- Comparison operators ----------------------------------------------->
+
 23. db.students.find({name:{$ne:"Harish"}})
 Explanation : To find all the documents where name field not equal to Harish.
 
@@ -85,6 +89,8 @@ Explanation : To find all the documents where gpa is greater than 8 and less tha
 29. db.students.find({name:{$ne:"Harish"}, gpa:{$gt:8, $lt:8.5}})
 Explanation : To find all the documents where name is not equal to Harish and gpa is greater than 8 and less than 8.5.
 
+<----------------------------------- Logical operators ------------------------------------------>
+
 30. db.students.find({name:{$in:["Harish", "Raja"]}})
 Explanation : To find all the documents where name is either Harish or Raja.
 
@@ -102,6 +108,8 @@ Explanation : To find all the documents where fullTime is true nor age is less t
 
 35. db.students.find({age:{$not:{$lt:24}}})
 Explanation : To find all the documents where age is not less than 24 which means age should be greater than or equal to 24 or null.
+
+<-------------------------------------------------------------------------------------------------->
 
 36. db.students.createIndex({name: 1})
 Explanation : To create index for the name field
@@ -123,3 +131,4 @@ Explanation : To create collection teachers where capped is true used to set the
 
 41. db.teachers.drop()
 Explanation : To delete the teachers collection.
+
